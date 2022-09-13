@@ -1,4 +1,4 @@
-package com.example.iphone_14_pro_notification
+package com.example.iphone_animation
 
 import io.flutter.embedding.android.FlutterActivity
 
