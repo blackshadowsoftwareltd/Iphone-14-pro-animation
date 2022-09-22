@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../helper/const.dart' show img;
 import '../helper/size.dart' show ScreenSize;
 
-class IncommingCall extends StatelessWidget {
-  const IncommingCall({Key? key}) : super(key: key);
+class InACall extends StatelessWidget {
+  const InACall({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class IncommingCall extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text('Phone', style: TextStyle(color: Colors.white)),
+                Text('In a Call With', style: TextStyle(color: Colors.white)),
                 Text(
                   'Mr. John Doe',
                   style: TextStyle(
