@@ -38,13 +38,21 @@ class InACall extends StatelessWidget {
             ),
           ),
         ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            Text('05:20', style: TextStyle(color: Colors.white)),
+            Text('minuts', style: TextStyle(color: Colors.white)),
+          ],
+        ),
+        FloatingActionButton.small(
+            backgroundColor: Colors.white60,
+            child: const Icon(Icons.mic_off_rounded, color: Colors.white),
+            onPressed: () {}),
         FloatingActionButton.small(
             backgroundColor: Colors.red,
             child: const Icon(Icons.call_end, color: Colors.white),
-            onPressed: () {}),
-        FloatingActionButton.small(
-            backgroundColor: Colors.green,
-            child: const Icon(Icons.call, color: Colors.white),
             onPressed: () {}),
       ]),
     );
