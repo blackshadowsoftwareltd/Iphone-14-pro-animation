@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../helper/const.dart' show img;
+import '../helper/const.dart' show user1;
 import '../helper/size.dart' show ScreenSize;
 
 class IncommingCall extends StatelessWidget {
@@ -16,7 +16,7 @@ class IncommingCall extends StatelessWidget {
           child: SizedBox(
             width: ScreenSize.smallHeight * .8,
             height: ScreenSize.smallHeight * .8,
-            child: Image.network(img, fit: BoxFit.cover),
+            child: Image.network(user1, fit: BoxFit.cover),
           ),
         ),
         Expanded(

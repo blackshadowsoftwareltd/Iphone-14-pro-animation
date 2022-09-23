@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../helper/size.dart' show ScreenSize;
-import 'in_a_call.dart' show InACall;
+import 'message.dart' show Message;
 
 class PopupBar extends StatelessWidget {
   const PopupBar({super.key});
@@ -17,7 +17,7 @@ class PopupBar extends StatelessWidget {
         // height: 22,
         width: ScreenSize.maxWidth,
         height: ScreenSize.smallHeight,
-        child: const InACall(),
+        child: const Message(),
       ),
     );
   }
