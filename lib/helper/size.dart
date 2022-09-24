@@ -16,8 +16,8 @@ class ScreenSize {
     height = data.size.height;
     maxWidth = width * .9;
     maxHeight = height * .3;
-    minWidth = 22;
-    minHeight = 22;
+    minWidth = 24;
+    minHeight = 24;
     smallWidth = width * .3;
     smallHeight = height * .1;
   }
