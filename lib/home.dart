@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChrome, SystemUiOverlayStyle;
 import 'helper/size.dart' show ScreenSize;
 
-import 'widgets/popup.dart' show PopupBar;
+import 'popups/popup.dart' show PopupBar;
+import 'widgets/buttons.dart' show FloatingButtons;
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -26,16 +27,11 @@ class _HomeState extends State<Home> {
         height: ScreenSize.height,
         child: Stack(
           alignment: Alignment.topCenter,
-          children: [PopupBar()],
+          children: const [PopupBar()],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: const FloatingButtons(),
     );
-    // return ColoredBox(
-    //   color: Colors.blue,
-    //   child: SizedBox(
-    //     width: size.width,
-    //     height: size.height,
-    //   ),
-    // );
   }
 }
