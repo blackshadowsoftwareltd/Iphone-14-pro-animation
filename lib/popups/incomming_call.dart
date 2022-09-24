@@ -11,15 +11,17 @@ class IncommingCall extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child: SizedBox(
-            width: ScreenSize.smallHeight * .8,
-            height: ScreenSize.smallHeight * .8,
-            child: Image.network(user1, fit: BoxFit.cover),
+        FittedBox(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: SizedBox(
+              width: ScreenSize.smallHeight * .8,
+              height: ScreenSize.smallHeight * .8,
+              child: Image.network(user1, fit: BoxFit.cover),
+            ),
           ),
         ),
-        Expanded(
+        FittedBox(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 7),
             child: Column(
@@ -38,14 +40,19 @@ class IncommingCall extends StatelessWidget {
             ),
           ),
         ),
-        FloatingActionButton.small(
-            backgroundColor: Colors.red,
-            child: const Icon(Icons.call_end, color: Colors.white),
-            onPressed: () {}),
-        FloatingActionButton.small(
-            backgroundColor: Colors.green,
-            child: const Icon(Icons.call, color: Colors.white),
-            onPressed: () {}),
+        const Spacer(),
+        FittedBox(
+          child: FloatingActionButton.small(
+              backgroundColor: Colors.red,
+              child: const Icon(Icons.call_end, color: Colors.white),
+              onPressed: () {}),
+        ),
+        FittedBox(
+          child: FloatingActionButton.small(
+              backgroundColor: Colors.green,
+              child: const Icon(Icons.call, color: Colors.white),
+              onPressed: () {}),
+        ),
       ]),
     );
   }

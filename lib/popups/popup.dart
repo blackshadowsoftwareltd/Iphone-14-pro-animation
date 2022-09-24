@@ -1,24 +1,63 @@
 import 'package:flutter/material.dart';
-import '../helper/size.dart' show ScreenSize;
-import 'video_calling.dart' show VideoCalling;
+import 'package:flutter_riverpod/flutter_riverpod.dart' show Consumer;
+import 'package:iphone_animation/helper/controllers/animation.dart';
+import '../helper/duration.dart'; 
+import '../providers/methods.dart' show cardHeight, cardWidth;
+import '../providers/provider.dart' show currentActivitie, visibility;
+import 'incomming_call.dart' show IncommingCall;
 
-class PopupBar extends StatelessWidget {
+class PopupBar extends StatefulWidget {
   const PopupBar({super.key});
 
   @override
+  State<PopupBar> createState() => _PopupBarState();
+}
+
+class _PopupBarState extends State<PopupBar> with TickerProviderStateMixin {
+  @override
+  void initState() {
+    super.initState();
+    initController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    disposeController();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      clipBehavior: Clip.antiAlias,
-      margin: const EdgeInsets.all(10),
-      color: Colors.black,
-      child: SizedBox(
-        // width: 22,
-        // height: 22,
-        width: ScreenSize.maxWidth,
-        height: ScreenSize.maxHeight,
-        child: const VideoCalling(),
-      ),
-    );
+    return Consumer(builder: (_, ref, __) {
+      final acitivity = ref.watch(currentActivitie);
+      final isVisable = ref.watch(visibility);
+      return Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        clipBehavior: Clip.antiAlias,
+        margin: const EdgeInsets.all(10),
+        color: Colors.black,
+        child: AnimatedSize(
+          duration: duration300,
+          reverseDuration: duration100,
+          curve: Curves.easeInOutCubic,
+          child: SizedBox(
+            width: cardWidth(acitivity),
+            height: cardHeight(acitivity),
+            child: isVisable ? const IncommingCall() : const SizedBox.shrink(),
+          ),
+        ),
+      );
+    });
+  }
+
+  void initController() {
+    activityController = AnimationController(
+        vsync: this, duration: duration300, reverseDuration: duration300);
+    activityAnimation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
+        parent: activityController, curve: Curves.easeInOutBack));
+  }
+
+  void disposeController() {
+    activityController.dispose();
   }
 }

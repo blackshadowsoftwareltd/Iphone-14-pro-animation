@@ -1,5 +1,5 @@
 enum Activities {
   none,
-  call,
   calling,
+  incoming,
 }

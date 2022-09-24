@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart'; 
-import 'helper/size.dart'show ScreenSize;
+import 'package:flutter/material.dart';
+import 'helper/size.dart' show ScreenSize;
 import 'home.dart' show Home;
+import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderScope;
 
 void main() {
-  runApp(MaterialApp(theme: ThemeData(), home: const App()));
+  runApp(
+      ProviderScope(child: MaterialApp(theme: ThemeData(), home: const App())));
 }
 
 class App extends StatelessWidget {
