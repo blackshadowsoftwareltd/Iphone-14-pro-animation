@@ -14,7 +14,7 @@ class FloatingButtons extends ConsumerWidget {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       FloatingActionButton.small(
           onPressed: () async => await inCommingCall(ref)),
-      FloatingActionButton.small(onPressed: () {}),
+      FloatingActionButton.small(onPressed: () async => await inACall(ref)),
       FloatingActionButton.small(onPressed: () {}),
       FloatingActionButton.small(onPressed: () {}),
       FloatingActionButton.small(onPressed: () {}),

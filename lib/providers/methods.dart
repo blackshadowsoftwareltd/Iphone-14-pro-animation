@@ -34,3 +34,15 @@ Future<void> inCommingCall(WidgetRef ref) async {
     isVisible.state = true;
   }
 }
+
+Future<void> inACall(WidgetRef ref) async {
+  final acitivity = ref.watch(currentActivitie.state);
+  final isVisible = ref.watch(visibility.state);
+  if (acitivity.state == Activities.calling) {
+    acitivity.state = Activities.none;
+    isVisible.state = false;
+  } else {
+    acitivity.state = Activities.calling;
+    isVisible.state = true;
+  }
+}

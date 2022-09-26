@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show Consumer;
 import 'package:iphone_animation/helper/controllers/animation.dart';
-import '../helper/duration.dart'; 
+import '../helper/duration.dart';
+import '../helper/enum.dart' show Activities;
 import '../providers/methods.dart' show cardHeight, cardWidth;
 import '../providers/provider.dart' show currentActivitie, visibility;
+import 'in_a_call.dart' show InACall;
 import 'incomming_call.dart' show IncommingCall;
 
 class PopupBar extends StatefulWidget {
@@ -43,7 +45,13 @@ class _PopupBarState extends State<PopupBar> with TickerProviderStateMixin {
           child: SizedBox(
             width: cardWidth(acitivity),
             height: cardHeight(acitivity),
-            child: isVisable ? const IncommingCall() : const SizedBox.shrink(),
+            child: isVisable
+                ? acitivity == Activities.incoming
+                    ? const IncommingCall()
+                    : acitivity == Activities.calling
+                        ? const InACall()
+                        : const SizedBox.shrink()
+                : const SizedBox.shrink(),
           ),
         ),
       );
