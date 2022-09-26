@@ -7,6 +7,7 @@ import '../providers/methods.dart' show cardHeight, cardWidth;
 import '../providers/provider.dart' show currentActivitie, visibility;
 import 'in_a_call.dart' show InACall;
 import 'incomming_call.dart' show IncommingCall;
+import 'message.dart' show Message;
 
 class PopupBar extends StatefulWidget {
   const PopupBar({super.key});
@@ -50,7 +51,9 @@ class _PopupBarState extends State<PopupBar> with TickerProviderStateMixin {
                     ? const IncommingCall()
                     : acitivity == Activities.calling
                         ? const InACall()
-                        : const SizedBox.shrink()
+                        : acitivity == Activities.message
+                            ? const Message()
+                            : const SizedBox.shrink()
                 : const SizedBox.shrink(),
           ),
         ),

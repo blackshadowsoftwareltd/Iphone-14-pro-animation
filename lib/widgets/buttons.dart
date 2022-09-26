@@ -13,9 +13,17 @@ class FloatingButtons extends ConsumerWidget {
     // final acitivity = ref.watch(currentActivitie.state);
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       FloatingActionButton.small(
+          backgroundColor: Colors.green,
+          child: const Icon(Icons.call),
           onPressed: () async => await inCommingCall(ref)),
-      FloatingActionButton.small(onPressed: () async => await inACall(ref)),
-      FloatingActionButton.small(onPressed: () {}),
+      FloatingActionButton.small(
+          backgroundColor: Colors.amber,
+          child: const Icon(Icons.call),
+          onPressed: () async => await inACall(ref)),
+      FloatingActionButton.small(
+          backgroundColor: Colors.deepPurple.shade700,
+          child: const Icon(Icons.message),
+          onPressed: () async => await message(ref)),
       FloatingActionButton.small(onPressed: () {}),
       FloatingActionButton.small(onPressed: () {}),
     ]);

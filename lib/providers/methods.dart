@@ -9,7 +9,9 @@ import 'provider.dart' show currentActivitie, h, visibility, w;
 double cardWidth(Activities a) {
   if (a == Activities.none) {
     w = ScreenSize.smallWidth;
-  } else if (a == Activities.calling || a == Activities.incoming) {
+  } else if (a == Activities.calling ||
+      a == Activities.incoming ||
+      a == Activities.message) {
     w = ScreenSize.maxWidth;
   }
   return w;
@@ -18,7 +20,9 @@ double cardWidth(Activities a) {
 double cardHeight(Activities a) {
   if (a == Activities.none) {
     h = ScreenSize.minHeight;
-  } else if (a == Activities.calling || a == Activities.incoming) {
+  } else if (a == Activities.calling ||
+      a == Activities.incoming ||
+      a == Activities.message) {
     h = ScreenSize.smallHeight;
   }
   return h;
@@ -54,6 +58,23 @@ Future<void> inACall(WidgetRef ref) async {
     isVisible.state = false;
   } else {
     acitivity.state = Activities.calling;
+    isVisible.state = true;
+  }
+}
+
+Future<void> message(WidgetRef ref) async {
+  final acitivity = ref.watch(currentActivitie.state);
+  final isVisible = ref.watch(visibility.state);
+  if (isVisible.state == true && acitivity.state != Activities.message) {
+    acitivity.state = Activities.none;
+    isVisible.state = false;
+    await Future.delayed(duration300);
+  }
+  if (acitivity.state == Activities.message) {
+    acitivity.state = Activities.none;
+    isVisible.state = false;
+  } else {
+    acitivity.state = Activities.message;
     isVisible.state = true;
   }
 }
