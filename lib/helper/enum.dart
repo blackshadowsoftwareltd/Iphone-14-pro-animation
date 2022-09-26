@@ -3,4 +3,5 @@ enum Activities {
   calling,
   incoming,
   message,
+  videoCalling,
 }

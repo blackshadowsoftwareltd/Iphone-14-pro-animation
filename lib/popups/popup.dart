@@ -8,6 +8,7 @@ import '../providers/provider.dart' show currentActivitie, visibility;
 import 'in_a_call.dart' show InACall;
 import 'incomming_call.dart' show IncommingCall;
 import 'message.dart' show Message;
+import 'video_calling.dart' show VideoCalling;
 
 class PopupBar extends StatefulWidget {
   const PopupBar({super.key});
@@ -40,7 +41,7 @@ class _PopupBarState extends State<PopupBar> with TickerProviderStateMixin {
         margin: const EdgeInsets.all(10),
         color: Colors.black,
         child: AnimatedSize(
-          duration: duration300,
+          duration: duration200,
           reverseDuration: duration100,
           curve: Curves.easeInOutCubic,
           child: SizedBox(
@@ -53,7 +54,9 @@ class _PopupBarState extends State<PopupBar> with TickerProviderStateMixin {
                         ? const InACall()
                         : acitivity == Activities.message
                             ? const Message()
-                            : const SizedBox.shrink()
+                            : acitivity == Activities.videoCalling
+                                ? const VideoCalling()
+                                : const SizedBox.shrink()
                 : const SizedBox.shrink(),
           ),
         ),

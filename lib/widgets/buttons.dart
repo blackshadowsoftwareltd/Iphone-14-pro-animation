@@ -24,7 +24,10 @@ class FloatingButtons extends ConsumerWidget {
           backgroundColor: Colors.deepPurple.shade700,
           child: const Icon(Icons.message),
           onPressed: () async => await message(ref)),
-      FloatingActionButton.small(onPressed: () {}),
+      FloatingActionButton.small(
+          backgroundColor: Colors.teal.shade300,
+          child: const Icon(Icons.video_call),
+          onPressed: () async => await videoCalling(ref)),
       FloatingActionButton.small(onPressed: () {}),
     ]);
   }
