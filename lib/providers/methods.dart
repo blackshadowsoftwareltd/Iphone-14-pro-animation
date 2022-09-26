@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart' show WidgetRef;
+import 'package:iphone_animation/helper/duration.dart';
 import 'package:iphone_animation/helper/size.dart' show ScreenSize;
 
 // import '../helper/duration.dart' show duration100, duration200, duration50;
@@ -26,6 +27,11 @@ double cardHeight(Activities a) {
 Future<void> inCommingCall(WidgetRef ref) async {
   final acitivity = ref.watch(currentActivitie.state);
   final isVisible = ref.watch(visibility.state);
+  if (isVisible.state == true && acitivity.state != Activities.incoming) {
+    acitivity.state = Activities.none;
+    isVisible.state = false;
+    await Future.delayed(duration300);
+  }
   if (acitivity.state == Activities.incoming) {
     acitivity.state = Activities.none;
     isVisible.state = false;
@@ -38,6 +44,11 @@ Future<void> inCommingCall(WidgetRef ref) async {
 Future<void> inACall(WidgetRef ref) async {
   final acitivity = ref.watch(currentActivitie.state);
   final isVisible = ref.watch(visibility.state);
+  if (isVisible.state == true && acitivity.state != Activities.calling) {
+    acitivity.state = Activities.none;
+    isVisible.state = false;
+    await Future.delayed(duration300);
+  }
   if (acitivity.state == Activities.calling) {
     acitivity.state = Activities.none;
     isVisible.state = false;
